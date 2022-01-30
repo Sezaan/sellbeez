@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper/swiper-bundle.min.css"
+/>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css"/>
+  <script src="./app.js"></script>
+  <title>SellBee</title>
+</head>
+
+<body>
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 nav-bg">
+  <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+    <div class="p-4 flex flex-row items-center justify-between">
+      <a href="#" class="flex items-center px-2">
+        <img src="./Assets/sellbee logo (1)-05.png" alt="Logo" class="h-32 w-32 mr-2">
+      </a>
+      <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+        <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+          <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+          <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+    <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+      <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-gray-200 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline py-1" href="#">Home</a>
+      <!-- <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Portfolio</a> -->
+      <!-- <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">About</a> -->
+      <!-- <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contact</a> -->
+      <div class="group inline-block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline mr-2">
+        <button
+          class="outline-none focus:outline-none rounded-sm flex items-center"
+        >
+          <a href="#" class="pr-1 font-semibold">Services</a>
+          <span>
+            <svg
+              class="fill-current h-4 w-4 transform group-hover:-rotate-180
+              transition duration-150 ease-in-out"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <ul
+          class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
+        transition duration-150 ease-in-out origin-top min-w-32"
+        >
+          <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+            <button
+              class="w-full text-left flex items-center outline-none focus:outline-none"
+            >
+              <a class="rounded-sm py-1 hover:bg-gray-100" href="#bee360">Bee360</a>
+              <span class="mr-auto">
+                <svg
+                  class="fill-current h-4 w-4
+                  transition duration-150 ease-in-out"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <ul
+              class="bg-white border rounded-sm absolute top-0 right-0 
+        transition duration-150 ease-in-out origin-top-left
+        min-w-32
+        "
+            >
+              <li class="px-3 py-1 hover:bg-gray-100">Product Supply</li>
+              <!-- <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+                <button
+                  class="w-full text-left flex items-center outline-none focus:outline-none"
+                >
+                  <span class="pr-1 flex-1">Python</span>
+                  <span class="mr-auto">
+                    <svg
+                      class="fill-current h-4 w-4
+                      transition duration-150 ease-in-out"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+                <ul
+                  class="bg-white border rounded-sm absolute top-0 right-0 
+            transition duration-150 ease-in-out origin-top-left
+            min-w-32
+            "
+                >
+                  <li class="px-3 py-1 hover:bg-gray-100">2.7</li>
+                  <li class="px-3 py-1 hover:bg-gray-100">3+</li>
+                </ul>
+              </li> -->
+              <li class="px-3 py-1 hover:bg-gray-100">Website</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Payment Gateway</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Packaging & Delivery</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Customer Support</li>
+              <li class="px-3 py-1 hover:bg-gray-100">E-Business Analysis</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Promotional Content Support</li>
+            </ul>
+          </li>
+          <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+            <button
+              class="w-full text-left flex items-center outline-none focus:outline-none"
+            >
+              <a href="#bee180" class="rounded-sm py-1 hover:bg-gray-100">Bee180</a>
+              <span class="mr-auto">
+                <svg
+                  class="fill-current h-4 w-4
+                  transition duration-150 ease-in-out"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <ul
+              class="bg-white border rounded-sm absolute top-0 right-0 
+        transition duration-150 ease-in-out origin-top-left
+        min-w-32
+        "
+            >
+              <li class="px-3 py-1 hover:bg-gray-100">Website</li>
+              <!-- <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+                <button
+                  class="w-full text-left flex items-center outline-none focus:outline-none"
+                >
+                  <span class="pr-1 flex-1">Python</span>
+                  <span class="mr-auto">
+                    <svg
+                      class="fill-current h-4 w-4
+                      transition duration-150 ease-in-out"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+                <ul
+                  class="bg-white border rounded-sm absolute top-0 right-0 
+            transition duration-150 ease-in-out origin-top-left
+            min-w-32
+            "
+                >
+                  <li class="px-3 py-1 hover:bg-gray-100">2.7</li>
+                  <li class="px-3 py-1 hover:bg-gray-100">3+</li>
+                </ul>
+              </li> -->
+              <li class="px-3 py-1 hover:bg-gray-100">Boosting</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Payment Gateway</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Customer Support</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Packaging & Delivery(On Demand)</li>
+              <li class="px-3 py-1 hover:bg-gray-100">E-Business Analysis</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Live/Photography Support</li>
+            </ul>
+          </li>
+
+          <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+            <button
+              class="w-full text-left flex items-center outline-none focus:outline-none"
+            >
+              <span class="rounded-sm py-1 hover:bg-gray-100">Bee90(Upcoming)</span>
+              <span class="mr-auto">
+                <svg
+                  class="fill-current h-4 w-4
+                  transition duration-150 ease-in-out"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <ul
+              class="bg-white border rounded-sm absolute top-0 right-0 
+        transition duration-150 ease-in-out origin-top-left
+        min-w-32
+        "
+            >
+              <li class="px-3 py-1 hover:bg-gray-100">Website</li>
+              <li class="px-3 py-1 hover:bg-gray-100">All Services On Demand</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+
+
+
+
+
+
+      <!-- <div class="group inline-block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+        <button
+          class="outline-none focus:outline-none rounded-sm flex items-center"
+        >
+          <a href="#" class="pr-1 font-semibold">Create</a>
+          <span>
+            <svg
+              class="fill-current h-4 w-4 transform group-hover:-rotate-180
+              transition duration-150 ease-in-out"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <ul
+          class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute 
+        transition duration-150 ease-in-out origin-top min-w-32"
+        >
+          <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+            <button
+              class="w-full text-left flex items-center outline-none focus:outline-none"
+            >
+              <span class="rounded-sm py-1 hover:bg-gray-100">Initiate Your Business</span>
+              <span class="mr-auto">
+                <svg
+                  class="fill-current h-4 w-4
+                  transition duration-150 ease-in-out"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <ul
+              class="bg-white border rounded-sm absolute top-0 right-0 
+        transition duration-150 ease-in-out origin-top-left
+        min-w-32
+        "
+            >
+              <li class="px-3 py-1 hover:bg-gray-100">Product Supply</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Website</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Payment Gateway</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Packaging & Delivery</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Customer Support</li>
+              <li class="px-3 py-1 hover:bg-gray-100">E-Business Analysis</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Promotional Content Support</li>
+            </ul>
+          </li>
+          <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+            <button
+              class="w-full text-left flex items-center outline-none focus:outline-none"
+            >
+              <span class="rounded-sm py-1 hover:bg-gray-100">Bee180</span>
+              <span class="mr-auto">
+                <svg
+                  class="fill-current h-4 w-4
+                  transition duration-150 ease-in-out"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <ul
+              class="bg-white border rounded-sm absolute top-0 right-0 
+        transition duration-150 ease-in-out origin-top-left
+        min-w-32
+        "
+            >
+              <li class="px-3 py-1 hover:bg-gray-100">Website</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Boosting</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Payment Gateway</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Customer Support</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Packaging & Delivery(On Demand)</li>
+              <li class="px-3 py-1 hover:bg-gray-100">E-Business Analysis</li>
+              <li class="px-3 py-1 hover:bg-gray-100">Live/Photography Support</li>
+            </ul>
+          </li>
+
+          <li class="rounded-sm relative px-3 py-1 hover:bg-gray-100">
+            <button
+              class="w-full text-left flex items-center outline-none focus:outline-none"
+            >
+              <span class="rounded-sm py-1 hover:bg-gray-100">Bee90(Upcoming)</span>
+              <span class="mr-auto">
+                <svg
+                  class="fill-current h-4 w-4
+                  transition duration-150 ease-in-out"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <ul
+              class="bg-white border rounded-sm absolute top-0 right-0 
+        transition duration-150 ease-in-out origin-top-left
+        min-w-32
+        "
+            >
+              <li class="px-3 py-1 hover:bg-gray-100">Website</li>
+              <li class="px-3 py-1 hover:bg-gray-100">All Services On Demand</li>
+            </ul>
+          </li>
+        </ul>
+      </div> -->
+      <div class="md:flex items-center w-min break-normal"><a href="https://mysellbee.com/login" class="px-5 py-2 ml-auto bg-black text-white  whitespace-nowrap"
+        style="border-radius: 100px;">Sign up</a></div>
+    </nav>
+  </div>
+</div>
+
+  <section class="heroArea" style="background-color: #F6F6F6;">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="heroH1">Get Your <br>
+        Business Ready <br>
+        In A touch!</h1>
+
+      <div class="bg-white p-5 grid grid-cols-2 gap-4 rounded-lg w-full md:w-7/12">
+        <div class="flex md:flex-nowrap flex-wrap">
+          <span class="w-12 h-12 my-auto px-5 rounded-full mr-5" style="background-color:#F6E3FF"></span>
+          <div class="my-auto">
+            <h5 style="font-size: .9rem;font-weight: 600; line-height: 18px;">200+ Suppliers To Make Your Business
+              Operation Smooth</h5>
+            <!-- <p class="mt-2" style="font-size: .7rem;">Lorem, ipsum dolor sit amet consectetur adipisicing elit</p> -->
+          </div>
+        </div>
+
+        <div class="flex md:flex-nowrap flex-wrap">
+          <span class="w-12 h-12 my-auto px-5 rounded-full mr-5" style="background-color:#F6E3FF"></span>
+          <div class="my-auto">
+            <h5 style="font-size: .9rem;font-weight: 600; line-height: 18px;">Authentic and Trusted Payment Methods To
+              Make Your Customer Loyal</h5>
+            <!-- <p class="mt-2" style="font-size: .7rem;">Lorem, ipsum dolor sit amet consectetur adipisicing elit</p> -->
+          </div>
+        </div>
+      </div>
+
+
+      <div class="bg-white p-5 rounded-lg w-full md:w-11/12 mt-16">
+        <div class="bg-black px-3 py-2 text-white rounded-2xl -mt-8 mb-3 ml-5"
+          style="font-size: .7rem;width: max-content;">3 easy steps to get in </div>
+        <div class=" md:grid grid-cols-4 gap-4  md:divide-x md:divide-gray-700">
+          <div class="flex md:flex-nowrap flex-wrap  px-5 py-3 md:py-0">
+            <span class="w-8 h-8 my-auto px-4 rounded-full mr-5 shadow" style="background-color:white"></span>
+            <div class="my-auto">
+              <h5 style="font-size: .9rem;font-weight: 600; line-height: 18px;">Select Your Desired Service</h5>
+              <p class="" style="font-size: .7rem;">i.g, 360°, 180°</p>
+            </div>
+          </div>
+
+          <div class="flex md:flex-nowrap flex-wrap  px-5 py-3 md:py-0">
+            <span class="w-8 h-8 my-auto px-4 rounded-full mr-5 shadow" style="background-color:white"></span>
+            <div class="my-auto">
+              <h5 style="font-size: .9rem;font-weight: 600; line-height: 18px;">Your Basic Info</h5>
+              <p class="" style="font-size: .7rem;">i.g, Name, ID, Business</p>
+            </div>
+          </div>
+
+          <div class="flex flex flex-wrap  px-5 py-3 md:py-0">
+            <span class="w-8 h-8 my-auto px-4 rounded-full mr-5 shadow" style="background-color:white"></span>
+            <div class="my-auto">
+              <h5 style="font-size: .9rem;font-weight: 600; line-height: 18px;">OTP</h5>
+              <p class="" style="font-size: .7rem;">No Password Needed</p>
+            </div>
+          </div>
+
+          <div class="w-full my-auto"><a href="https://mysellbee.com/login" class="px-3 py-2 bg-black text-white inline-block text-center w-full ml-2"
+              style="border-radius: 100px;">Sign up</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-area">
+    <div class="daContents py-10 max-w-6xl mx-auto px-4">
+      <div class="md:grid gap-x-4 grid-cols-4">
+        <img class="my-3 md:my-0" src="./Assets/Image-3.jpg" alt="">
+        <img class="my-3 md:my-0" src="./Assets/Image-6.jpg" alt="">
+        <img class="my-3 md:my-0" src="./Assets/Image-8.jpg" alt="">
+        <img class="my-3 md:my-0" src="./Assets/Image-9.jpg" alt="">
+        <!-- <div class="bg-black px-3 py-5 text-center rounded-xl mb-3 md:mb-0">
+                    <img src="./Assets/Hero Header.png" class="w-12 h-12 rounded-full bg-white mx-auto" alt="">
+                    <div class="pt-5">
+                        <h5 class="text-white font-bold text-lg">A Lot of Discount</h5>
+                        <p class="text-white text-sm">Lorem ipsum dolor sit
+                            amet for living good.</p>
+                </div>
+                </div> -->
+
+        <!-- <div class="bg-black px-3 py-5 text-center rounded-xl mb-3 md:mb-0">
+                    <img src="./Assets/Hero Header.png" class="w-12 h-12 rounded-full bg-white mx-auto" alt="">
+                    <div class="pt-5">
+                        <h5 class="text-white font-bold text-lg">A Lot of Discount</h5>
+                        <p class="text-white text-sm">Lorem ipsum dolor sit
+                            amet for living good.</p>
+                </div>
+                </div> -->
+
+        <!-- <div class="bg-black px-3 py-5 text-center rounded-xl mb-3 md:mb-0">
+                    <img src="./Assets/Hero Header.png" class="w-12 h-12 rounded-full bg-white mx-auto" alt="">
+                    <div class="pt-5">
+                        <h5 class="text-white font-bold text-lg">A Lot of Discount</h5>
+                        <p class="text-white text-sm">Lorem ipsum dolor sit
+                            amet for living good.</p>
+                </div>
+                </div> -->
+
+        <!-- <div class="bg-black px-3 py-5 text-center rounded-xl mb-3 md:mb-0">
+                    <img src="./Assets/Hero Header.png" class="w-12 h-12 rounded-full bg-white mx-auto" alt="">
+                    <div class="pt-5">
+                        <h5 class="text-white font-bold text-lg">A Lot of Discount</h5>
+                        <p class="text-white text-sm">Lorem ipsum dolor sit
+                            amet for living good.</p>
+                </div>
+                </div> -->
+
+      </div>
+
+      <div class="text-center mt-16 py-12" id="bee360">
+        <div class="w-12 h-12 my-auto px-5 rounded-full mx-auto " style="background-color:#FDBE15"></div>
+        <h1 class="font-bold text-5xl mt-5">BEE 360</h1>
+        <p>Create your Business with us</p>
+
+
+        <!-- <div class="md:grid grid-cols-3 mt-12 willHavePath">
+          <div class="col-span-1"><img class="h-100 bg-black py-16 px-5 rounded-lg"
+              src="./Assets/WhatsApp Image 2021-12-09 at 14.15.03.jpeg" alt=""></div>
+          <div class="col-span-2 md:grid grid-cols-2 mx-auto">
+            <div class="px-2 py-2 w-3/4 md:mx-0 mx-auto">
+              <div class="rounded-xl overflow-hidden shadow-lg bg-white px-3 daMargined">
+                <img class="cardImg " src="./Assets/Image-3.jpg" alt="Mountain">
+                <div class="px-2 text-left">
+                  <div class="font-semibold text-lg mb-2">Uninterrupted Supply</div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="px-2 md:-ml-10 py-2 w-3/4 md:mx-0 mx-auto">
+              <div class="rounded-xl overflow-hidden shadow-lg bg-white px-3 ">
+                <img class="cardImg" src="./Assets/Image-6.jpg" alt="Mountain">
+                <div class="px-2 text-left">
+                  <div class="font-semibold text-lg mb-2">Product Delivery</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-2 py-2 w-3/4 md:mx-0 mx-auto">
+              <div class="rounded-xl overflow-hidden shadow-lg bg-white px-3 daMargined">
+                <img class="cardImg" src="./Assets/Image-8.jpg" alt="Mountain">
+                <div class="px-2 text-left">
+                  <div class="font-semibold text-lg mb-2">Business Analysis</div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="px-2 py-2 w-3/4 md:mx-0 mx-auto">
+              <div class="rounded-xl overflow-hidden shadow-lg bg-white px-3 ">
+                <img class="cardImg" src="./Assets/Image-9.jpg" alt="Mountain">
+                <div class="px-2 text-left">
+                  <div class="font-semibold text-lg mb-2">Content Support</div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        
+
+
+          <div class="firstSwiper">
+            <div class="swiper mySwiper ">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img src="assets/1.jpg" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/2.jpg" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/3.jpg" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/4.jpg" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/5.jpg" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/6.jpg" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/7.jpg" />
+                </div>
+                <div class="swiper-slide">
+                  <img src="assets/8.jpg" />
+                </div>
+              </div>
+            </div>
+            <div class="swiper-pagination1"></div>
+            <div class="swiper-button-next swiper-button-next1 "></div>
+              <div class="swiper-button-prev swiper-button-prev1"></div>
+          </div>
+
+        
+
+          <div class="md:grid grid-cols-3 py-12" id="bee180">
+
+            <div class="text-left md:my-auto col-span-1">
+              <div class="w-12 h-12 my-auto px-5 rounded-full mr-auto " style="background-color:#FDBE15"></div>
+              <h1 class="font-bold text-5xl ml-5">BEE 180 </h1>
+              <p>Grow your Business with us</p>
+              <!-- <div class="w-full mt-3"><button class="px-3 py-2 bg-black text-white ml-2" style="border-radius: 100px;">Read More</button></div> -->
+            </div>
+
+            <div class="secondSwiper">
+              <div class="swiper2 mySwiper2 col-span-2 mx-auto">
+                <div class="swiper-wrapper mb-10">
+                  <div class="swiper-slide2 swiper-slide"><img class="w-full h-full" src="assets/for180/1.jpg"/></div>
+                  <div class="swiper-slide2 swiper-slide"><img class="w-full h-full" src="assets/for180/2.jpg" /></div>
+                  <div class="swiper-slide2 swiper-slide"><img class="w-full h-full" src="assets/for180/3.jpg" /></div>
+                  <div class="swiper-slide2 swiper-slide"><img class="w-full h-full" src="assets/for180/4.jpg" /></div>
+                  <div class="swiper-slide2 swiper-slide"><img class="w-full h-full" src="assets/for180/5.jpg" /></div>
+                  <div class="swiper-slide2 swiper-slide"><img class="w-full h-full" src="assets/for180/6.jpg" /></div>
+                  <div class="swiper-slide2 swiper-slide"><img class="w-full h-full" src="assets/for180/7.jpg" /></div>
+                  <div class="swiper-slide2 swiper-slide"><img class="w-full h-full" src="assets/for180/8.jpg" /></div>
+                </div>
+              </div>
+              <div class="swiper-pagination2"></div>
+                <div class="swiper-button-next swiper-button-next2"></div>
+              <div class="swiper-button-prev swiper-button-prev2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <section class="bg-black w-full py-4 md:py-0">
+    <div class="max-w-6xl mx-auto px-4 md:grid grid-cols-2">
+      <img class="w-3/4 md:mx-0 mx-auto" src="./Assets/undraw_window_shopping_re_0kbm.png" alt="">
+      <div class="text-left my-auto text-white">
+        <div class="w-12 h-12 my-auto px-5 rounded-full mr-auto md:mt-0 mt-5" style="background-color:#FDBE15"></div>
+        <h1 class="font-bold text-4xl ml-5">Digital Market Reports</h1>
+        <p>According to the reports and analysis of Digital Market Experts: Almost 45% of the online customers are not
+          buying products in case of the sellers don’t have any active websites.</p>
+        <div class="w-full mt-3"><button class="px-3 py-2 text-white ml-2"
+            style="border-radius: 100px;background-color:#FDBE15">Read More</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <!-- <div class="grid grid-cols-4 gap-5">
+            <img src="./Assets/logo 1.png" alt="">
+            <img src="./Assets/logo 2.png" alt="">
+            <img src="./Assets/logo 3.png" alt="">
+            <img src="./Assets/logo 4.png" alt="">
+        </div> -->
+    <div class="mx-auto text-center text-2xl font-bold">
+      CREATE AND GROW YOUR BUSINESS WITH SELL BEE
+    </div>
+  </section>
+
+
+
+  <footer class="footer-1 pb-4 sm:pb-6" style="background-color: #1F2121;">
+    <div class="container mx-auto px-4">
+      <div class="md:grid grid-cols-2">
+        <img class="col-span-1 w-32 h-32" src="./Assets/sellbee logo (1)-06.png" alt="">
+        <div class="col-span-1 my-auto">
+          <div class="flex  flex-wrap w-full">
+            <p class="text-white md:my-auto my-3 mr-4">Join our mailing list!</p>
+            <input placeholder="Enter your email" type="text"
+              class="rounded-full px-3 text-white font-sm h-9 md:my-auto bg-black mb-3">
+            <div class="my-auto mb-3 md:mb-0 md:-ml-10"><button class="px-3 py-2 bg-black text-white"
+                style="border-radius: 100px;background-color: #FDBE15;">Join Now</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
+        <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
+          <h5 class="text-lg font-bold mb-6 text-white">Sell Bee</h5>
+          <ul class="list-none footer-links">
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">About the Team</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Contact Us</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Terms & Conditions</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Privacy Policy</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Careers </a>
+            </li>
+          </ul>
+        </div>
+        <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
+          <h5 class="text-lg font-bold mb-6 text-white">Collaborators</h5>
+          <ul class="list-none footer-links">
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Authentic Merchants</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Drop-shippers</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Associates</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Developers</a>
+            </li>
+          </ul>
+        </div>
+        <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+          <h5 class="text-lg font-bold mb-6 text-white">Merchant Support</h5>
+          <ul class="list-none footer-links">
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Help Center</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Live Chat</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Call Center</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Assistive Tools</a>
+            </li>
+          </ul>
+        </div>
+        <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+          <h5 class="text-lg font-bold mb-6 text-white">Customer Support</h5>
+          <ul class="list-none footer-links">
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Live Chat</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Call Center</a>
+            </li>
+            <li class="mb-2">
+              <a href="mailto:support@sellbeez.com" class="border-b border-solid border-transparent text-gray-100">mail</a>
+            </li>
+          </ul>
+        </div>
+        <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+          <h5 class="text-lg font-bold mb-6 text-white">Payment Methods</h5>
+          <ul class="list-none footer-links">
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Visa</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">MasterCard</a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">bKash </a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Nagad </a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Amex </a>
+            </li>
+            <li class="mb-2">
+              <a href="#" class="border-b border-solid border-transparent text-gray-100">Paypal </a>
+            </li>
+          </ul>
+        </div>
+        <div class="px-4 mt-4 sm:w-1/3 xl:w-1/6 sm:mx-auto xl:mt-0 xl:ml-auto">
+          <h5 class="text-lg font-bold mb-6 text-white sm:text-center xl:text-left">Stay Connected</h5>
+          <div class="flex sm:justify-center xl:justify-start">
+            <a href=""
+              class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 text-gray-600 hover:text-white hover:bg-blue-600 hover:border-blue-600">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href=""
+              class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-blue-400 hover:border-blue-400">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href=""
+              class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-red-600 hover:border-red-600">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href=""
+              class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-indigo-600 hover:border-indigo-600">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="text-white text-center">© 2021 - SellBee |. All Rights Reserved.</div>
+  </footer>
+
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper2", {
+        effect: "cards",
+        grabCursor: true,
+        pagination: {
+          el: ".swiper-pagination2",
+          clickable: true,
+        },
+        navigation: {
+        nextEl: ".swiper-button-next2",
+        prevEl: ".swiper-button-prev2",
+      },
+      });
+    var swiper = new Swiper(".mySwiper", {
+      navigation: {
+        nextEl: ".swiper-button-next1",
+        prevEl: ".swiper-button-prev1",
+      },
+      effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        },
+        pagination: {
+          el: ".swiper-pagination1",
+          clickable: true,
+        },
+    });
+  </script>
+</body>
+
+</html>
